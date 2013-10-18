@@ -13,6 +13,7 @@
 % TODO implement the module
 % TODO make string//1 an argument like Separator
 % TODO so that I can call phrase(split(comma, day_of_week, Parts), Xs)
+:- meta_predicate split(//,*,*,*).
 split(Separator, [Part|Parts]) -->
     string(Part),
     Separator,
