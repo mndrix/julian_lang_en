@@ -1,6 +1,8 @@
 name(julian_lang_en).
+title('Parse English language phrases into library(julian) constraints').
+
 version('0.0.1').
-title('').
+
 author('Michael Hendricks','michael@ndrix.org').
 packager('Michael Hendricks','michael@ndrix.org').
 maintainer('Michael Hendricks','michael@ndrix.org').

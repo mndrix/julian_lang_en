@@ -9,6 +9,11 @@
 :- use_module(library(julian/calendar/gregorian), [month_number/2]).
 
 
+:- multifile julian:form_time/2.
+julian:form_time(english(English), Dt) :-
+    once(phrase(julian_lang_en:english_form(Form), English)),
+    !,
+    form_time(Form, Dt).
 
 % TODO implement the module
 % TODO make string//1 an argument like Separator
@@ -74,6 +79,24 @@ codes_month(Codes, Month) :-
     month_number(Month, _).
 
 
+%%  english_form(-Form)//
+%
+%   Parse an English language date or time phrase into a library(julian)
+%   form. One usually interacts with library(julian/lang/en) by calling
+%   Julian's form_time/2 predicate using the english/1 form. For
+%   example, `form_time(english("tuesday or thursday in April"), Dt)`.
+%   However, it's sometimes convenient to separate the parsing and
+%   constraining steps.  In that case, call english_form//1 directly:
+%
+%       ?- phrase(english_form(Form), "tuesday or thursday in April").
+%       Form = [month(april), dow([tuesday, thursday])].
+%
+%   This predicate is declared `multifile` so that you can add
+%   additional English phrases to suit your needs. Perhaps defining what
+%   "summer" means to you:
+%
+%       julian_lang_en:english_form(month([june,july,august])) -->
+%           "summer".
 :- multifile english_form//1.
 english_form(true) -->
     "each day",
