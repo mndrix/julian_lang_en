@@ -76,9 +76,11 @@ codes_month(Codes, Month) :-
 :- multifile english_form//1.
 english_form(true) -->
     "each day",
+    end_of_content,
     !.
 english_form(weekday) -->
     "weekday",
+    end_of_content,
     !.
 english_form(dow(Day)) -->
     string(Word),
@@ -104,6 +106,7 @@ english_form(gregorian(Y,M,_)) -->
     { month_number(Month, M) },
     " ",
     integer(Y),
+    end_of_content,
     { Y > 999 },
     !.
 english_form(gregorian(_,M,D)) -->
@@ -112,10 +115,12 @@ english_form(gregorian(_,M,D)) -->
     { month_number(Month, M) },
     " ",
     ordinal(D),
+    end_of_content,
     !.
 english_form(gregorian(Y,_,_)) -->
     parity(Y),
     " years",
+    end_of_content,
     !.
 english_form([A,B|T]) -->  % list of at least two elements (indexable)
     { Forms = [A,B|T] },
