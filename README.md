@@ -52,7 +52,7 @@ The rules for "second Wednesday" and "final Thursday", etc. can be a somewhat fr
 
 # Changes in this Version
 
-  * First public release
+  * Fix a packaging error
 
 # Installation
 
