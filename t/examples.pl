@@ -1,6 +1,8 @@
 :- use_module(library(julian/lang/en), [english_form//1]).
 :- use_module(library(tap)).
 
+:- set_prolog_flag(double_quotes, codes).
+
 % simple day of the week names
 phrase(english_form(dow(monday)),"Monday").
 phrase(english_form(dow(thursday)),"thursday").
